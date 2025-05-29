@@ -23,6 +23,30 @@
       "source_url": "",
       "timestamp": "2025-05-29T18:09:49.951768",
       "status": "active"
+    },
+    {
+      "fake_claim": "wifi causes rain?",
+      "counter_facts": "does it? stupid",
+      "source_url": "",
+      "timestamp": "2025-05-29T19:05:31.679743",
+      "status": "active",
+      "id": 4
+    },
+    {
+      "fake_claim": "hellpo",
+      "counter_facts": "frisya",
+      "source_url": "",
+      "timestamp": "2025-05-29T19:06:39.496305",
+      "status": "active",
+      "id": 5
+    },
+    {
+      "id": 6,
+      "fake_claim": "wifi causes rain?",
+      "counter_facts": "their is no evidence for it though",
+      "source_url": "",
+      "timestamp": "2025-05-29T19:32:27.611559",
+      "status": "active"
     }
   ]
 }

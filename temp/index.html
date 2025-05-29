@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔥 Truth Tracker - DesiHack Force</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #4ecdc4;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .form-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-section h2 {
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #4ecdc4;
+            box-shadow: 0 0 0 3px rgba(78, 205, 196, 0.1);
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #4ecdc4, #44a08d);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(68, 160, 141, 0.3);
+        }
+
+        .btn-danger {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+            color: white;
+            padding: 8px 16px;
+            font-size: 0.9rem;
+        }
+
+        .btn-danger:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 3px 10px rgba(255, 107, 107, 0.3);
+        }
+
+        .btn-automation {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            margin-left: 10px;
+        }
+
+        .btn-automation:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .claims-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .claims-section h2 {
+            margin-bottom: 25px;
+            color: #333;
+            font-size: 1.5rem;
+        }
+
+        .claim-card {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 5px solid #4ecdc4;
+            transition: all 0.3s ease;
+        }
+
+        .claim-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .claim-header {
+            display: flex;
+            justify-content: between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .claim-id {
+            background: #4ecdc4;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .claim-timestamp {
+            font-size: 0.8rem;
+            color: #666;
+            margin-left: auto;
+        }
+
+        .fake-claim {
+            background: #ffe6e6;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid #ff6b6b;
+        }
+
+        .fake-claim h4 {
+            color: #d63031;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .counter-facts {
+            background: #e6f7f5;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid #4ecdc4;
+        }
+
+        .counter-facts h4 {
+            color: #00b894;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .claim-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        .source-link {
+            color: #667eea;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .source-link:hover {
+            text-decoration: underline;
+        }
+
+        .no-claims {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+            padding: 40px;
+        }
+
+        .automation-status {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #4ecdc4;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            display: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .stats {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .form-section,
+            .claims-section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="automation-status" id="automationStatus">
+        🤖 Twitter automation running...
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🔥 Truth Tracker</h1>
+            <p>DesiHack Force - Real-time Misinformation Counter</p>
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number" id="totalClaims">{{ claims|length }}</div>
+                    <div class="stat-label">Total Claims</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="activeClaims">{{ claims|length }}</div>
+                    <div class="stat-label">Active Counters</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">🇮🇳</div>
+                    <div class="stat-label">Protecting India</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add New Claim Form -->
+        <div class="form-section">
+            <h2>📝 Add New Misinformation Counter</h2>
+            <form method="POST" action="/add_claim">
+                <div class="form-group">
+                    <label for="fake_claim">🚨 Fake Claim/Misinformation:</label>
+                    <textarea name="fake_claim" id="fake_claim" placeholder="Enter the fake claim or misinformation you want to counter..." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="counter_facts">✅ Counter Facts & Truth:</label>
+                    <textarea name="counter_facts" id="counter_facts" placeholder="Enter the factual information and evidence to counter the misinformation..." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="source_url">🔗 Source URL (Optional):</label>
+                    <input type="url" name="source_url" id="source_url" placeholder="https://reliable-source.com/article">
+                </div>
+                
+                <button type="submit" class="btn btn-primary">💾 Save Truth Counter</button>
+                <button type="button" class="btn btn-automation" onclick="triggerAutomation()">🐦 Auto-Tweet Counter</button>
+            </form>
+        </div>
+
+        <!-- Claims List -->
+        <div class="claims-section">
+            <h2>📊 Truth Counter Database</h2>
+            
+            {% if claims %}
+                {% for claim in claims %}
+                <div class="claim-card">
+                    <div class="claim-header">
+                        <span class="claim-id">ID: {{ claim.id }}</span>
+                        <span class="claim-timestamp">{{ claim.timestamp[:19].replace('T', ' ') }}</span>
+                    </div>
+                    
+                    <div class="fake-claim">
+                        <h4>🚨 Fake Claim:</h4>
+                        <p>{{ claim.fake_claim }}</p>
+                    </div>
+                    
+                    <div class="counter-facts">
+                        <h4>✅ Counter Facts:</h4>
+                        <p>{{ claim.counter_facts }}</p>
+                    </div>
+                    
+                    {% if claim.source_url %}
+                    <p><strong>Source:</strong> <a href="{{ claim.source_url }}" target="_blank" class="source-link">{{ claim.source_url }}</a></p>
+                    {% endif %}
+                    
+                    <div class="claim-actions">
+                        <form method="POST" action="/delete_claim/{{ claim.id }}" style="display: inline;">
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this claim?')">🗑️ Delete</button>
+                        </form>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="no-claims">
+                    <p>🎯 No misinformation counters added yet. Start by adding your first truth counter above!</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <script>
+        function triggerAutomation() {
+            // Redirect to Twitter form instead of direct automation
+            window.location.href = '/twitter_form';
+        }
+
+        // Auto-refresh claims count
+        function updateStats() {
+            fetch('/api/claims')
+            .then(response => response.json())
+            .then(claims => {
+                document.getElementById('totalClaims').textContent = claims.length;
+                document.getElementById('activeClaims').textContent = claims.length;
+            })
+            .catch(error => console.error('Error updating stats:', error));
+        }
+
+        // Update stats every 30 seconds
+        setInterval(updateStats, 30000);
+    </script>
+</body>
+</html>
