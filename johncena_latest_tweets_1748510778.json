@@ -1,0 +1,72 @@
+{
+  "username": "johncena",
+  "collected_at": "2025-05-29 14:56:18",
+  "total_tweets": 5,
+  "very_recent_count": 0,
+  "recent_count": 0,
+  "strategies_used": [
+    "profile_following_context"
+  ],
+  "tweets": [
+    {
+      "id": "8bbd56eabe40",
+      "text": "Have the discipline to do what needs to be done, especially when you don’t feel like it.",
+      "timestamp": "2025-03-03T11:06:04.000Z",
+      "metrics": {
+        "likes": "263652 Likes. Like",
+        "retweets": "33483 reposts. Repost"
+      },
+      "strategy": "profile_following_context",
+      "is_very_recent": false,
+      "is_recent": false
+    },
+    {
+      "id": "fac413da722d",
+      "text": "I was just there!!! Guess you couldn’t see me? Hey @JohnCena, we've got a gift for you waiting at the office!",
+      "timestamp": "2024-11-20T20:33:15.000Z",
+      "metrics": {
+        "likes": "280608 Likes. Like",
+        "retweets": "11541 reposts. Repost"
+      },
+      "strategy": "profile_following_context",
+      "is_very_recent": false,
+      "is_recent": false
+    },
+    {
+      "id": "e070776bbdee",
+      "text": "A surreal 24 hours. So grateful for the Ambani family for their unmatched warmth and hospitality. An experience filled with so many unforgettable moments which allowed me to connect with countless new friends, including meeting @iamsrk and being able to tell him personally the",
+      "timestamp": "2024-07-13T14:39:22.000Z",
+      "metrics": {
+        "likes": "288135 Likes. Like",
+        "retweets": "24793 reposts. Repost"
+      },
+      "strategy": "profile_following_context",
+      "is_very_recent": false,
+      "is_recent": false
+    },
+    {
+      "id": "913b86d70e3a",
+      "text": "Please @BTS_twt forgive my inexperience with the language, but here is my answer .@BTS_twt kick things off by talking about their famous fans! Hear what they have to say about @JohnCena being a part of the #BTSARMY. #BTSxET",
+      "timestamp": "2018-05-18T22:06:45.000Z",
+      "metrics": {
+        "likes": "582408 Likes. Like",
+        "retweets": "229941 reposts. Repost"
+      },
+      "strategy": "profile_following_context",
+      "is_very_recent": false,
+      "is_recent": false
+    },
+    {
+      "id": "67a162d0b2bb",
+      "text": "Sooo #iPhoneX about #FaceID ...ummmmm .... what do I do?",
+      "timestamp": "2017-09-12T20:55:08.000Z",
+      "metrics": {
+        "likes": "454305 Likes. Like",
+        "retweets": "272295 reposts. Repost"
+      },
+      "strategy": "profile_following_context",
+      "is_very_recent": false,
+      "is_recent": false
+    }
+  ]
+}

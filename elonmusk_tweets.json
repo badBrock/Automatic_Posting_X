@@ -1,0 +1,34 @@
+{
+  "username": "elonmusk",
+  "collected_at": "2025-05-29 15:21:39",
+  "total_tweets": 3,
+  "tweets": [
+    {
+      "text": "Halloween with my Mom",
+      "timestamp": "2022-11-01T04:15:02.000Z",
+      "metrics": {
+        "likes": "1009585 Likes. Like",
+        "retweets": "47775 reposts. Repost"
+      },
+      "index": 1
+    },
+    {
+      "text": "El burro sabe mas que Maduro",
+      "timestamp": "2024-07-29T21:11:57.000Z",
+      "metrics": {
+        "likes": "998021 Likes. Like",
+        "retweets": "167736 reposts. Repost"
+      },
+      "index": 2
+    },
+    {
+      "text": "Since I’ve been asked a lot:\n\nBuy stock in several companies that make products & services that *you* believe in.\n\nOnly sell if you think their products & services are trending worse. Don’t panic when the market does.\n\nThis will serve you well in the long-term.",
+      "timestamp": "2022-05-01T06:23:15.000Z",
+      "metrics": {
+        "likes": "1006076 Likes. Like",
+        "retweets": "106619 reposts. Repost"
+      },
+      "index": 3
+    }
+  ]
+}

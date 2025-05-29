@@ -1,0 +1,107 @@
+{
+  "username": "elonmusk",
+  "collected_at": "2025-05-29 14:37:36",
+  "total_tweets": 10,
+  "tweets": [
+    {
+      "id": "b9cfa18d4ec5",
+      "text": "For now Everyone you love, everyone you know, every human being who ever was, lived out their lives on this little blue dot..",
+      "timestamp": "2025-05-26T15:04:52.000Z",
+      "metrics": {
+        "likes": "144864 Likes. Like",
+        "retweets": "18404 reposts. Repost"
+      },
+      "index": 1
+    },
+    {
+      "id": "1da16b9c8875",
+      "text": "Next I’m buying Coca-Cola to put the cocaine back in",
+      "timestamp": "2022-04-28T00:56:58.000Z",
+      "metrics": {
+        "likes": "4341614 Likes. Like",
+        "retweets": "770779 reposts. Repost"
+      },
+      "index": 2
+    },
+    {
+      "id": "fcf5582a2748",
+      "text": "Elon Musk Elon Musk @elonmusk · 71K 71K 71K 442K 442K 442K 3.3M 3.3M 3.3M 244M 244M 244M",
+      "timestamp": "2024-07-13T22:51:28.000Z",
+      "metrics": {
+        "likes": "3357335 Likes. Like",
+        "retweets": "442398 reposts. Repost"
+      },
+      "index": 3
+    },
+    {
+      "id": "51a778ca6cbe",
+      "text": "I hope that even my worst critics remain on Twitter, because that is what free speech means",
+      "timestamp": "2022-04-25T16:12:30.000Z",
+      "metrics": {
+        "likes": "2950088 Likes. Like",
+        "retweets": "397733 reposts. Repost"
+      },
+      "index": 4
+    },
+    {
+      "id": "00266d630d49",
+      "text": "The future is gonna be so",
+      "timestamp": "2024-11-06T05:01:15.000Z",
+      "metrics": {
+        "likes": "2631092 Likes. Like",
+        "retweets": "223304 reposts. Repost"
+      },
+      "index": 5
+    },
+    {
+      "id": "9209941de615",
+      "text": "Let’s make Twitter maximum fun!",
+      "timestamp": "2022-04-28T01:53:50.000Z",
+      "metrics": {
+        "likes": "2412716 Likes. Like",
+        "retweets": "205770 reposts. Repost"
+      },
+      "index": 6
+    },
+    {
+      "id": "659d2cd41471",
+      "text": "Yesss!!!",
+      "timestamp": "2022-04-25T19:43:22.000Z",
+      "metrics": {
+        "likes": "2381515 Likes. Like",
+        "retweets": "369222 reposts. Repost"
+      },
+      "index": 7
+    },
+    {
+      "id": "b62d4e18de13",
+      "text": "Listen, I can’t do miracles ok",
+      "timestamp": "2022-04-28T01:57:27.000Z",
+      "metrics": {
+        "likes": "2335512 Likes. Like",
+        "retweets": "213281 reposts. Repost"
+      },
+      "index": 8
+    },
+    {
+      "id": "684a3f3f6958",
+      "text": "It is morning in America again",
+      "timestamp": "2024-11-06T16:39:24.000Z",
+      "metrics": {
+        "likes": "2372341 Likes. Like",
+        "retweets": "225618 reposts. Repost"
+      },
+      "index": 9
+    },
+    {
+      "id": "b0b225b76e16",
+      "text": "I fully endorse President Trump and hope for his rapid recovery",
+      "timestamp": "2024-07-13T22:45:13.000Z",
+      "metrics": {
+        "likes": "2300601 Likes. Like",
+        "retweets": "391445 reposts. Repost"
+      },
+      "index": 10
+    }
+  ]
+}

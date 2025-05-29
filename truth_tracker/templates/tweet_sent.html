@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎉 Tweet Processing - Truth Tracker</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #00d4aa 0%, #1da1f2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            animation: popIn 0.6s ease-out;
+        }
+
+        @keyframes popIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .success-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: bounce 1s ease-in-out infinite alternate;
+        }
+
+        @keyframes bounce {
+            from { transform: translateY(-10px); }
+            to { transform: translateY(0); }
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            color: #1da1f2;
+            margin-bottom: 15px;
+        }
+
+        .message {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .tweet-preview {
+            background: #f8f9fa;
+            border: 2px solid #e1e8ed;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 25px 0;
+            text-align: left;
+        }
+
+        .tweet-preview h3 {
+            color: #1da1f2;
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .tweet-text {
+            font-size: 1.1rem;
+            line-height: 1.5;
+            color: #333;
+        }
+
+        .status-checker {
+            background: #e3f2fd;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+
+        .status-display {
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        .status-loading {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .status-success {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #1da1f2, #0d8bd9);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(29, 161, 242, 0.3);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid #1da1f2;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 8px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                margin: 10px;
+            }
+            
+            .btn-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="success-icon">🚀</div>
+        
+        <div class="header">
+            <h1>Tweet Processing Started!</h1>
+        </div>
+        
+        <div class="message">
+            Your counter-tweet is being posted to Twitter. Our automation system is working in the background to combat misinformation with facts!
+        </div>
+
+        <div class="tweet-preview">
+            <h3>📝 Your Tweet:</h3>
+            <div class="tweet-text">{{ tweet_text }}</div>
+        </div>
+
+        <div class="status-checker">
+            <h3>📊 Status Monitor:</h3>
+            <div class="status-display status-loading" id="statusDisplay">
+                <span class="spinner"></span>
+                Processing your tweet...
+            </div>
+            <button onclick="checkStatus()" class="btn btn-secondary" style="margin-top: 15px;" id="checkBtn">
+                🔄 Check Status
+            </button>
+        </div>
+
+        <div class="btn-group">
+            <a href="/twitter_form" class="btn btn-primary">
+                📝 Post Another Tweet
+            </a>
+            <a href="/" class="btn btn-secondary">
+                🏠 Back to Dashboard
+            </a>
+        </div>
+    </div>
+
+    <script>
+        let statusCheckInterval;
+
+        function checkStatus() {
+            const statusDisplay = document.getElementById('statusDisplay');
+            const checkBtn = document.getElementById('checkBtn');
+            
+            checkBtn.disabled = true;
+            checkBtn.textContent = 'Checking...';
+            
+            fetch('/tweet_status')
+                .then(response => response.json())
+                .then(data => {
+                    const status = data.status;
+                    
+                    if (status.startsWith('SUCCESS')) {
+                        statusDisplay.className = 'status-display status-success';
+                        statusDisplay.innerHTML = '✅ Tweet posted successfully!';
+                        clearInterval(statusCheckInterval);
+                    } else if (status.startsWith('FAILED')) {
+                        statusDisplay.className = 'status-display status-error';
+                        statusDisplay.innerHTML = '❌ Tweet posting failed: ' + status.substring(7);
+                        clearInterval(statusCheckInterval);
+                    } else {
+                        statusDisplay.className = 'status-display status-loading';
+                        statusDisplay.innerHTML = '<span class="spinner"></span>' + status;
+                    }
+                })
+                .catch(error => {
+                    statusDisplay.className = 'status-display status-error';
+                    statusDisplay.innerHTML = '❌ Error checking status';
+                    console.error('Error:', error);
+                })
+                .finally(() => {
+                    checkBtn.disabled = false;
+                    checkBtn.textContent = '🔄 Check Status';
+                });
+        }
+
+        // Auto-check status every 10 seconds
+        statusCheckInterval = setInterval(checkStatus, 10000);
+
+        // Initial status check after 3 seconds
+        setTimeout(checkStatus, 3000);
+
+        // Stop checking after 5 minutes
+        setTimeout(() => {
+            clearInterval(statusCheckInterval);
+        }, 300000);
+    </script>
+</body>
+</html>

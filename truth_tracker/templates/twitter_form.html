@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Tweet - Truth Tracker</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1da1f2 0%, #0d8bd9 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .form-container {
+            padding: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            font-size: 16px;
+            font-family: inherit;
+            resize: vertical;
+            min-height: 120px;
+            transition: border-color 0.3s ease;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #1da1f2;
+            box-shadow: 0 0 0 3px rgba(29, 161, 242, 0.1);
+        }
+
+        .char-counter {
+            text-align: right;
+            margin-top: 5px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .char-counter.warning {
+            color: #ff6b35;
+        }
+
+        .char-counter.error {
+            color: #e74c3c;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #1da1f2 0%, #0d8bd9 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(29, 161, 242, 0.4);
+        }
+
+        .btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .status-container {
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .status-processing {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+        }
+
+        .status-success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+
+        .status-error {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+
+        .status-icon {
+            display: inline-block;
+            margin-right: 10px;
+            font-size: 18px;
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #1da1f2;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #1da1f2;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .back-btn:hover {
+            color: #0d8bd9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🐦 Post Tweet</h1>
+            <p>Share your message with the world</p>
+        </div>
+        
+        <div class="form-container">
+            <a href="/" class="back-btn">← Back to Dashboard</a>
+            
+            <form id="tweetForm">
+                <div class="form-group">
+                    <label for="tweet_text">Tweet Content:</label>
+                    <textarea 
+                        id="tweet_text" 
+                        name="tweet_text" 
+                        placeholder="What's happening?" 
+                        required
+                        maxlength="280"
+                    ></textarea>
+                    <div class="char-counter" id="charCounter">0 / 280</div>
+                </div>
+                
+                <button type="submit" class="btn" id="submitBtn">
+                    Post Tweet
+                </button>
+            </form>
+            
+            <div class="status-container" id="statusContainer">
+                <div id="statusMessage"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const tweetForm = document.getElementById('tweetForm');
+        const tweetText = document.getElementById('tweet_text');
+        const charCounter = document.getElementById('charCounter');
+        const submitBtn = document.getElementById('submitBtn');
+        const statusContainer = document.getElementById('statusContainer');
+        const statusMessage = document.getElementById('statusMessage');
+
+        // Character counter
+        tweetText.addEventListener('input', function() {
+            const length = this.value.length;
+            charCounter.textContent = `${length} / 280`;
+            
+            if (length > 250) {
+                charCounter.className = 'char-counter warning';
+            } else if (length > 280) {
+                charCounter.className = 'char-counter error';
+                submitBtn.disabled = true;
+            } else {
+                charCounter.className = 'char-counter';
+                submitBtn.disabled = false;
+            }
+        });
+
+        // Form submission
+        tweetForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const tweetContent = tweetText.value.trim();
+            
+            if (!tweetContent) {
+                showStatus('error', 'Please enter some tweet content!');
+                return;
+            }
+
+            if (tweetContent.length > 280) {
+                showStatus('error', 'Tweet is too long! Maximum 280 characters allowed.');
+                return;
+            }
+
+            // Disable form and show processing status
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<div class="loading-spinner"></div>Posting...';
+            showStatus('processing', 'Starting Twitter automation...');
+
+            try {
+                // Send POST request
+                const formData = new FormData();
+                formData.append('tweet_text', tweetContent);
+
+                const response = await fetch('/post_tweet', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (response.ok) {
+                    showStatus('processing', 'Tweet submission received! Running automation in background...');
+                    
+                    // Start polling for status updates
+                    pollStatus();
+                } else {
+                    const errorData = await response.json();
+                    showStatus('error', `Error: ${errorData.error || 'Unknown error occurred'}`);
+                    resetForm();
+                }
+            } catch (error) {
+                showStatus('error', `Network error: ${error.message}`);
+                resetForm();
+            }
+        });
+
+        function showStatus(type, message) {
+            statusContainer.style.display = 'block';
+            statusContainer.className = `status-container status-${type}`;
+            
+            let icon = '';
+            if (type === 'processing') {
+                icon = '<div class="loading-spinner"></div>';
+            } else if (type === 'success') {
+                icon = '<span class="status-icon">✅</span>';
+            } else if (type === 'error') {
+                icon = '<span class="status-icon">❌</span>';
+            }
+            
+            statusMessage.innerHTML = icon + message;
+        }
+
+        function resetForm() {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = 'Post Tweet';
+        }
+
+        async function pollStatus() {
+            let attempts = 0;
+            const maxAttempts = 60; // Poll for up to 5 minutes (60 * 5 seconds)
+            
+            const pollInterval = setInterval(async () => {
+                attempts++;
+                
+                try {
+                    const response = await fetch('/tweet_status');
+                    const data = await response.json();
+                    const status = data.status;
+                    
+                    console.log(`Status check ${attempts}: ${status}`);
+                    
+                    if (status.startsWith('SUCCESS')) {
+                        showStatus('success', status);
+                        clearInterval(pollInterval);
+                        resetForm();
+                        // Clear form after successful tweet
+                        tweetText.value = '';
+                        charCounter.textContent = '0 / 280';
+                    } else if (status.startsWith('FAILED')) {
+                        showStatus('error', status);
+                        clearInterval(pollInterval);
+                        resetForm();
+                    } else if (status.startsWith('PROCESSING')) {
+                        showStatus('processing', status);
+                    } else {
+                        showStatus('processing', 'Automation in progress...');
+                    }
+                    
+                    // Stop polling after max attempts
+                    if (attempts >= maxAttempts) {
+                        showStatus('error', 'Status check timed out. Please check manually.');
+                        clearInterval(pollInterval);
+                        resetForm();
+                    }
+                    
+                } catch (error) {
+                    console.error('Status check error:', error);
+                    if (attempts >= 3) {
+                        showStatus('error', 'Unable to check status. Please refresh the page.');
+                        clearInterval(pollInterval);
+                        resetForm();
+                    }
+                }
+            }, 5000); // Check every 5 seconds
+        }
+    </script>
+</body>
+</html>

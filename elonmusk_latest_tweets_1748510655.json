@@ -1,0 +1,192 @@
+{
+  "username": "elonmusk",
+  "collected_at": "2025-05-29 14:54:15",
+  "total_tweets": 15,
+  "very_recent_count": 0,
+  "recent_count": 1,
+  "strategies_used": [
+    "profile_following_context"
+  ],
+  "tweets": [
+    {
+      "id": "27a24c0ffd5d",
+      "text": "For now Everyone you love, everyone you know, every human being who ever was, lived out their lives on this little blue dot..",
+      "timestamp": "2025-05-26T15:04:52.000Z",
+      "metrics": {
+        "likes": "144864 Likes. Like",
+        "retweets": "18404 reposts. Repost"
+      },
+      "strategy": "profile_following_context",
+      "is_very_recent": false,
+      "is_recent": true
+    },
+    {
+      "id": "684a3f3f6958",
+      "text": "It is morning in America again",
+      "timestamp": "2024-11-06T16:39:24.000Z",
+      "metrics": {
+        "likes": "2372341 Likes. Like",
+        "retweets": "225618 reposts. Repost"
+      },
+      "strategy": "profile_following_context",
+      "is_very_recent": false,
+      "is_recent": false
+    },
+    {
+      "id": "2617cd87b4b6",
+      "text": "Let that sink in",
+      "timestamp": "2024-11-06T05:35:11.000Z",
+      "metrics": {
+        "likes": "2229278 Likes. Like",
+        "retweets": "246024 reposts. Repost"
+      },
+      "strategy": "profile_following_context",
+      "is_very_recent": false,
+      "is_recent": false
+    },
+    {
+      "id": "072dbbca9833",
+      "text": "The future is gonna be so",
+      "timestamp": "2024-11-06T05:01:15.000Z",
+      "metrics": {
+        "likes": "2631092 Likes. Like",
+        "retweets": "223304 reposts. Repost"
+      },
+      "strategy": "profile_following_context",
+      "is_very_recent": false,
+      "is_recent": false
+    },
+    {
+      "id": "28d2b3065214",
+      "text": "Haters will say this is AI",
+      "timestamp": "2024-08-14T15:24:30.000Z",
+      "metrics": {
+        "likes": "1814759 Likes. Like",
+        "retweets": "243417 reposts. Repost"
+      },
+      "strategy": "profile_following_context",
+      "is_very_recent": false,
+      "is_recent": false
+    },
+    {
+      "id": "7d2b64722299",
+      "text": "Elon Musk Elon Musk DogeDesigner DogeDesigner DogeDesigner 24K 24K 24K 146K 146K 146K 2.1M 2.1M 2.1M 176M 176M 176M",
+      "timestamp": "2024-08-06T04:57:46.000Z",
+      "metrics": {
+        "likes": "2128645 Likes. Like",
+        "retweets": "146981 reposts. Repost"
+      },
+      "strategy": "profile_following_context",
+      "is_very_recent": false,
+      "is_recent": false
+    },
+    {
+      "id": "5a07b268db68",
+      "text": "Elon Musk Elon Musk 71K 71K 71K 442K 442K 442K 3.3M 3.3M 3.3M 244M 244M 244M",
+      "timestamp": "2024-07-13T22:51:28.000Z",
+      "metrics": {
+        "likes": "3357335 Likes. Like",
+        "retweets": "442398 reposts. Repost"
+      },
+      "strategy": "profile_following_context",
+      "is_very_recent": false,
+      "is_recent": false
+    },
+    {
+      "id": "bff044512805",
+      "text": "I fully endorse President Trump and hope for his rapid recovery",
+      "timestamp": "2024-07-13T22:45:13.000Z",
+      "metrics": {
+        "likes": "2300601 Likes. Like",
+        "retweets": "391445 reposts. Repost"
+      },
+      "strategy": "profile_following_context",
+      "is_very_recent": false,
+      "is_recent": false
+    },
+    {
+      "id": "60d8f615d2ef",
+      "text": "Elon Musk Elon Musk 61K 61K 61K 358K 358K 358K 1.8M 1.8M 1.8M",
+      "timestamp": "2022-11-18T04:23:16.000Z",
+      "metrics": {
+        "likes": "1899184 Likes. Like",
+        "retweets": "358523 reposts. Repost"
+      },
+      "strategy": "profile_following_context",
+      "is_very_recent": false,
+      "is_recent": false
+    },
+    {
+      "id": "e15a510fa21c",
+      "text": "Comedy is now legal on Twitter",
+      "timestamp": "2022-10-28T21:16:42.000Z",
+      "metrics": {
+        "likes": "2142930 Likes. Like",
+        "retweets": "256509 reposts. Repost"
+      },
+      "strategy": "profile_following_context",
+      "is_very_recent": false,
+      "is_recent": false
+    },
+    {
+      "id": "72d3c07d3557",
+      "text": "the bird is freed",
+      "timestamp": "2022-10-28T03:49:11.000Z",
+      "metrics": {
+        "likes": "2247729 Likes. Like",
+        "retweets": "359105 reposts. Repost"
+      },
+      "strategy": "profile_following_context",
+      "is_very_recent": false,
+      "is_recent": false
+    },
+    {
+      "id": "b62d4e18de13",
+      "text": "Listen, I can’t do miracles ok",
+      "timestamp": "2022-04-28T01:57:27.000Z",
+      "metrics": {
+        "likes": "2335512 Likes. Like",
+        "retweets": "213281 reposts. Repost"
+      },
+      "strategy": "profile_following_context",
+      "is_very_recent": false,
+      "is_recent": false
+    },
+    {
+      "id": "9209941de615",
+      "text": "Let’s make Twitter maximum fun!",
+      "timestamp": "2022-04-28T01:53:50.000Z",
+      "metrics": {
+        "likes": "2412716 Likes. Like",
+        "retweets": "205770 reposts. Repost"
+      },
+      "strategy": "profile_following_context",
+      "is_very_recent": false,
+      "is_recent": false
+    },
+    {
+      "id": "de986ee2d9f3",
+      "text": "Next I’m buying Coca-Cola to put the cocaine back in",
+      "timestamp": "2022-04-28T00:56:58.000Z",
+      "metrics": {
+        "likes": "4341614 Likes. Like",
+        "retweets": "770779 reposts. Repost"
+      },
+      "strategy": "profile_following_context",
+      "is_very_recent": false,
+      "is_recent": false
+    },
+    {
+      "id": "3c8cfaad4edf",
+      "text": "I hope that even my worst critics remain on Twitter, because that is what free speech means",
+      "timestamp": "2022-04-25T16:12:30.000Z",
+      "metrics": {
+        "likes": "2950088 Likes. Like",
+        "retweets": "397733 reposts. Repost"
+      },
+      "strategy": "profile_following_context",
+      "is_very_recent": false,
+      "is_recent": false
+    }
+  ]
+}
